@@ -1,11 +1,34 @@
 import React, { Component } from 'react';
-import { PageHeader, Table } from 'react-bootstrap';
+import { PageHeader, Table, Button, Modal } from 'react-bootstrap';
+import ApplicationEdit from './ApplicationEdit';
 
 class ApplicationList extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      showAddModal: false
+    };
+
+    this.openAddModal=this.openAddModal.bind(this);
+    this.closeAddModal=this.closeAddModal.bind(this);
+  };
+
+  openAddModal() {
+    this.setState({ showAddModal: true });
+  };
+
+  closeAddModal() {
+    this.setState({ showAddModal: false });
+  };
+
   render() {
     return (
       <div>
         <PageHeader>Applications</PageHeader>
+        <p>
+          <Button bsStyle="primary" bsSize="large" onClick={this.openAddModal}>Add application</Button>
+        </p>
 
         <Table responsive striped bordered condensed hover>
           <thead>
@@ -28,6 +51,9 @@ class ApplicationList extends Component {
             </tr>
           </tbody>
         </Table>
+
+        <ApplicationEdit show={this.state.showAddModal} close={this.closeAddModal} />
+
       </div>
     );
   }
