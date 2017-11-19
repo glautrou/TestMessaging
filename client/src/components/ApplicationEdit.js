@@ -29,10 +29,15 @@ class ApplicationEdit extends Component {
 
   handleSubmit(e) {
     this.setState({ isSubmiting: true });
-    //alert('submit: ' + this.state.name);
+    var application = {
+      name: this.state.name
+    };
     setTimeout(() => {
       // Completed of async action, set loading state back
+
       this.setState({ isSubmiting: false });
+      this.props.onAdd(application);
+      this.props.close();
     }, 2000);
   };
 

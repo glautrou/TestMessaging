@@ -10,8 +10,9 @@ class ApplicationList extends Component {
       showAddModal: false
     };
 
-    this.openAddModal=this.openAddModal.bind(this);
-    this.closeAddModal=this.closeAddModal.bind(this);
+    this.openAddModal = this.openAddModal.bind(this);
+    this.closeAddModal = this.closeAddModal.bind(this);
+    this.handleApplicationAdded = this.handleApplicationAdded.bind(this);
   };
 
   openAddModal() {
@@ -20,6 +21,10 @@ class ApplicationList extends Component {
 
   closeAddModal() {
     this.setState({ showAddModal: false });
+  };
+
+  handleApplicationAdded(data) {
+    alert('New application: ' + data.name);
   };
 
   render() {
@@ -52,7 +57,10 @@ class ApplicationList extends Component {
           </tbody>
         </Table>
 
-        <ApplicationEdit show={this.state.showAddModal} close={this.closeAddModal} />
+        <ApplicationEdit
+          show={this.state.showAddModal}
+          close={this.closeAddModal}
+          onAdd={this.handleApplicationAdded} />
 
       </div>
     );
