@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { PageHeader } from 'react-bootstrap';
 
 class Home extends Component {
   render() {
     return (
       <div>
-          Home page
+        <PageHeader>Welcome to Messaging!</PageHeader>
       </div>
     );
   }
