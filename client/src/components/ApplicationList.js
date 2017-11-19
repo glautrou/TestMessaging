@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { PageHeader, Table, Button, Modal } from 'react-bootstrap';
 import ApplicationEdit from './ApplicationEdit';
+import ApplicationListItem from './ApplicationListItem';
+
+const applications = [
+  { id: 1, name: 'Application 1', date: '01/01/2017 01:00' },
+  { id: 2, name: 'Application 2', date: '01/01/2017 01:00' },
+  { id: 3, name: 'Application 3', date: '01/01/2017 01:00' }
+];
 
 class ApplicationList extends Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
+      applications: applications,
       showAddModal: false
     };
 
@@ -44,16 +52,13 @@ class ApplicationList extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Application 1</td>
-              <td>18/11/2017</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Application 2</td>
-              <td>19/11/2017</td>
-            </tr>
+          {
+              this.state.applications.map((application, i) => {
+                return <ApplicationListItem key={i} id={application.id} name={application.name} date={application.date} />;
+              })
+            }
+
+            
           </tbody>
         </Table>
 
