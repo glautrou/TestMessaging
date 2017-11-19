@@ -35,6 +35,7 @@ class ApplicationEdit extends Component {
     setTimeout(() => {
       // Completed of async action, set loading state back
 
+      this.setState({ name: '' });
       this.setState({ isSubmiting: false });
       this.props.onAdd(application);
       this.props.close();

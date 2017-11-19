@@ -32,7 +32,14 @@ class ApplicationList extends Component {
   };
 
   handleApplicationAdded(data) {
-    alert('New application: ' + data.name);
+    var application = {
+      id: '',
+      name: data.name,
+      date: ''
+    };
+    console.log(application);
+    applications.push(application);
+    this.setState({ applications: applications });
   };
 
   render() {
