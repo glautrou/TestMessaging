@@ -4,6 +4,7 @@ import './App.css';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
+import ApplicationList from './components/ApplicationList';
 import About from './components/About';
 
 class App extends Component {
@@ -21,12 +22,14 @@ class App extends Component {
             <div>
               <Navbar>
                 <Nav>
-                  <NavItem href="/" to="/" active={window.location.pathname === '/'}>Home</NavItem>
+                <NavItem href="/" to="/" active={window.location.pathname === '/'}>Home</NavItem>
+                <NavItem href="/applications" to="/applications" active={window.location.pathname === '/applications'}>Applications</NavItem>
                   <NavItem href="/about" to="/about" active={window.location.pathname === '/about'}>About</NavItem>
                 </Nav>
               </Navbar>
 
               <Route exact path="/" component={Home} />
+              <Route path="/applications" component={ApplicationList} />
               <Route path="/about" component={About} />
             </div>
           </Router>
